@@ -1,46 +1,68 @@
-# Detalles
-La prueba consiste en crear un buscador y listado de tours usando el API de Turismoi.pe
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Consideraciones
-* El buscador debe permitir filtros por Región, Actividad y días de viaje. Obligatorio es el campo de Región.
-* El listado de tours debe permitir ordenamiento por precio y días.
-* Mostrar en los listados foto, precio, titulo, region, días y demás data que consideren relevante.
-* Las imágenes deben cargarse usando la técnica de Lazy Loading.
-* Usar javascript como lenguage frontend + framework a elección (Preferimos React o Vue)
-* Usar frameworks para el maquetado de vistas.
+## Available Scripts
 
-# Recursos
+In the project directory, you can run:
 
-Para poder hacer uso de nuesta API se deben usar las siguientes credenciales:
+### `npm start`
 
-**Token:** f2b15a0105d45
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-La documentación de nuestra API esta disponible en:
-http://turismoi.pe/api/documentation
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-Logos de Turismoi disponibles en /sources
+### `npm test`
 
-# Ejemplos donde se usa nuestra API
-* http://turismoi.pe/tours-y-paquetes-turisticos-peru
-* http://peru.com/turismo
-* https://play.google.com/store/apps/details?id=m.turismoi.pe
-* https://itunes.apple.com/pe/app/turismoi.pe/id1033366145?mt=8
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-# A evaluar
-* Herramientas utilizadas en el desarrollo de la solución.
-* Correcto manejo de Git, recomendado uso de issues y microcommits.
-* Manejo de frameworks de desarrollo. Punto extra si se usa React o Vue
-* Se tomará en cuenta el uso de preprocesadores.
-* Diseño responsive.
-* Deseable buen manejo de Diseño Web. Buscamos un perfil creativo
-* Puntos extra por uso de herramientas de Testing: Deseable Tests Unitarios.
-* Plus si tienen tiempo de mostrar el detalle de un tour: http://turismoi.pe/api/documentation#tour
-* **Nota:** No tomares en cuenta la cantidad de features realizados, sino más bien la calidad del código y metodologías de trabajo empleadas.
+### `npm run build`
 
-# Importante
-* Hacer un fork en GitHub de este repositorio. No enviar commits directamente.
-* Agregarme al repositorio clonado como *willywg*
-* Detalles relevantes de sus avances pueden notificármelo con un comentario de GitHub hacia *willywg* dentro del commit o línea de código.
-* Consultas o dudas sobre el avance deben ser enviadas a *willy@turismoi.com*. Para contacto directo usar Whatsapp: 959350453
-* Una vez terminado el avance notificarme por los medios anteriormente mencionados para proceder a evaluarlos.
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
