@@ -10,20 +10,18 @@ const ContentFilter = ({type, name, items}) => (
       <div className="filter-content__title">{name}</div>
     </div>
     <div className="filter-content__list">
-      {
-        // eslint-disable-next-line react/prop-types
+      {items && items.length > 0 && (
         items.map((item) => {
           if(type === 'checkbox') {
-
-           return (
-             <div className="filter-content__item">
-               <CheckboxItem name={item.name} value={item.value} id="dd" />
-             </div>
-           )
+            return (
+              <div className="filter-content__item">
+                <CheckboxItem name={item.name} value={item.value} id="dd" />
+              </div>
+            )
           }
           return null
         })
-      }
+      )}
     </div>
   </div>
 )
