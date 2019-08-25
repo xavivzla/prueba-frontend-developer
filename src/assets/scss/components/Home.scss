@@ -1,0 +1,87 @@
+.home{
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+	&__background{
+		position: absolute;
+		width: 50%;
+		right: 0;
+		height: 100%;
+	}
+	&__image{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+	&__wrapper{
+		width: 100%;
+		max-width: 1400px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		height: 100%;
+	}
+	&__logo{
+		position: absolute;
+		left: 0;
+		top: 20px;	
+	}
+	&__left{
+		width: 50%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	&__subtitle{
+		font-weight: 300;
+		font-size: 20px;
+		color: #999693
+	}
+	&__title{
+		font-weight: 700;
+		font-size: 60px;
+		width: 70%;
+		color: #333;
+	}
+	&__search{
+		width: 70%;
+		margin-top: 20px;
+	}
+	&__datalist{
+		width: 100%;
+		color: #333;
+	}
+	&__input-search{
+		height: 60px;
+		width: 100%;
+		line-height: 30px;
+		font-size: 22px;
+		display: flex;
+		align-items: center;
+		padding: 0 5px;
+	}
+	&__buttons{
+		display: flex;
+		margin-top: 20px;
+	}
+	&__btn{
+		cursor: pointer;
+		border: 0;
+		width: calc(50% - 5px);
+		padding: 20px;
+		color: white;
+		background-color: #f57c00;
+		margin-right: 10px;
+		font-weight: 700;
+		&:nth-last-child(1){
+			margin-right: 0;
+		}
+	}
+	&__brands{
+		width: 80%;
+	}
+}

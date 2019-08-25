@@ -1,9 +1,18 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div>Creando app</div>
-  )
-}
+import Home from './Home'
+import ErrorPage from './ErrorPage'
+
+import '../assets/scss/App.scss'
+
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route path='/' exact component={Home} />
+      <Route component={ErrorPage} />
+    </Switch>
+  </BrowserRouter>
+)
 
 export default App
