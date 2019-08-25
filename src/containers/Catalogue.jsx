@@ -1,9 +1,10 @@
 import React from 'react'
+import SidebarFilter from '../components/SidebarFiters';
 
 
 const Catalogue = () => (
   <div className="catalogue">
-    catalogue
+    <SidebarFilter />
   </div>
 )
 
