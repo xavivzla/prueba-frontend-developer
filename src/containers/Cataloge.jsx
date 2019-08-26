@@ -54,7 +54,7 @@ class Cataloge extends Component {
         </div>
         <div className="cataloge__cont">
           <div className="cataloge__left">
-            <SidebarFilter regions={regionsList} />
+            <SidebarFilter regions={regionsList} params={this.props.location.params } />
           </div>
           <div className="cataloge__right">
             <BarFilterSort />
