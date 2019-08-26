@@ -20,6 +20,7 @@ class Peticiones {
   }
   
   static listTours(params) {
+    console.log(params)
 		return (
 			async () =>{
 				const getData = await fetch(`${Peticiones.URL_TOURS}?region_id=${params.region_id}`, Peticiones.CONFIG)

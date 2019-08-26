@@ -5,14 +5,14 @@ import CheckboxItem from './CheckboxItem'
 import '../assets/scss/components/ContentFilter.scss'
 import SelectBoxItem from './SelectBoxItem';
 
-const ContentFilter = ({type, name, items, place, params}) => (
+const ContentFilter = ({type, name, items, place, changeRegion, params}) => (
   <div className="filter-content">
     <div className="filter-content__header">
       <div className="filter-content__title">{name}</div>
     </div>
     {type === 'selectbox' && (
       <div className="filter-content__select">
-        <SelectBoxItem items={items} place={place} params={params}/>
+        <SelectBoxItem items={items} place={place} changeRegion={changeRegion} params={params}/>
       </div>
     )}
     {type === 'checkbox' && type === 'radiobox' && (

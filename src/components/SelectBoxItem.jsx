@@ -4,9 +4,8 @@ import '../assets/scss/components/Selectbox.scss'
 
 const SelectBoxItem = (props) => (
 
-  <select name="" id="" className="selectbox">
+  <select name="" id="" className="selectbox" onChange={(e) => {props.changeRegion(e)}}>
     <option>{props.place}</option>
-    {console.log(props)}
     {props.items && props.items.length > 0 && (
       props.items.map( item => {
         if(props.params && props.params.id === item.id){

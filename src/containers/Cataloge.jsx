@@ -25,8 +25,18 @@ async function getTours(params) {
     //     updateToursList(result)
 }
 class Cataloge extends Component {
-  state = {
-    toursList: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      toursList: [],
+      filters: {
+        region_id: null,
+        activity_id: null,
+        days_id: null,
+      }
+    }
+
+    this._handleChangeRegion = this._handleChangeRegion.bind(this)
   }
 
   componentDidMount() {
@@ -39,6 +49,43 @@ class Cataloge extends Component {
       this.setState({toursList: data.packages})
     })
   }
+
+
+
+  // pushNewRoute(regionChange) {
+	// 	const region = this.context.regionsList.find(region => region.id === regionChange)
+  //   const slugRegion = region.slug
+  //   const idRegion = region.id
+  //   const nameRegion = region.name
+
+	// 	this.props.history.push({
+  //     pathname: `/cataloge/${slugRegion}`,
+  //     params: {
+  //       id: idRegion,
+  //       name: nameRegion,
+        
+	// 		}
+	// 	})
+  // }
+
+  _handleChangeRegion(e) {
+    this.setState({
+      filters: {
+        region_id: e.target.value
+      }
+    })
+    console.log(this.state)
+    
+    setTimeout(() => {
+      getTours(this.state.filters)
+      .then((data) => {
+        console.log('change', data)
+        this.setState({toursList: data.packages})
+      })
+    }, 50)
+  }
+
+
 
   render() {
     const { regionsList } = this.context
@@ -54,7 +101,7 @@ class Cataloge extends Component {
         </div>
         <div className="cataloge__cont">
           <div className="cataloge__left">
-            <SidebarFilter regions={regionsList} params={this.props.location.params } />
+            <SidebarFilter regions={regionsList} params={this.props.location.params } changeRegion={this._handleChangeRegion} />
           </div>
           <div className="cataloge__right">
             <BarFilterSort />
