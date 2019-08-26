@@ -1,4 +1,4 @@
-@import '_declare-breakpoints';
+@import './declare-breakpoints.scss';
 
 @mixin desde($medida){
   @if map-has-key($breakpoints, $medida){

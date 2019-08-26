@@ -1,0 +1,30 @@
+.bar-filter{
+  margin-bottom: 50px;
+  &__order{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__name{
+    font-weight: normal;
+    font-size: 14px;
+    font-family: "ProximaNova-Semibold", sans-serif;
+    color: #305357;
+    margin: 0;
+  }
+  &__select{
+    height: 43px;
+    margin-left: 20px;
+    box-sizing: border-box;
+    background: none;
+    padding: 0 20px;
+    appearance: none;
+    font-size: 14px;
+    color: #305357;
+    position: relative;
+    z-index: 2;
+    border: 1px solid #E3E3E3;
+    border-radius: 3px;
+    font-family: "ProximaNova-Regular", sans-serif;
+  }
+}

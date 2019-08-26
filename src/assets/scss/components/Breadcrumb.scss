@@ -1,0 +1,31 @@
+.breadcrumb{
+  &__list{
+    display: flex;
+    flex-direction: row;
+  }
+  &__item{
+    margin: 0;
+    margin-right: 20px;
+    position: relative;
+    &:before {
+      content: "/";
+      position: absolute;
+      top: 2px;
+      right: -12px;
+      font-family: icomoon;
+      font-size: 16px;
+      color: #b0bebf;
+    }
+    &:last-child{
+      margin-right: 0px;
+      &:before{
+        content: none;
+      }
+    }
+  }
+  &__link{
+    color: #b0bebf;
+    font-size: 12px;
+    font-family: "ProximaNova-Semibold", sans-serif;
+  }
+}

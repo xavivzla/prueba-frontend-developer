@@ -1,5 +1,5 @@
 .filter-content{
-  padding-top: 24px;
+  padding: 24px 20px 0px 20px;
   box-sizing: border-box;
   &__header{
 
@@ -13,11 +13,12 @@
     font-size: 14px;
     color: #305357;
   }
-  &__list{
+  &__list, &__select{
     padding: 10px 0 25px 0;
     box-sizing: border-box;
     border-bottom: 1px solid #F6F6F6;
   }
+
   &__item{
     margin-bottom: 15px;
   }

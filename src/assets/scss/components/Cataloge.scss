@@ -3,19 +3,27 @@
     display: grid;
     grid-template-columns: 260px 1fr;
     grid-gap: 70px;
+    margin-top: 50px;
   }
   &__left{
 
+  }
+  &__name{
+    font-size: 42px;
+    font-family: "ProximaNova-Bold", sans-serif;
+    color: #305357;
   }
   &__right{
 
   }
   &__list{
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(180px,175px));
+    grid-template-columns: repeat(auto-fill,minmax(180px,240px));
     grid-gap: 20px;
   }
   &__item{
-
+    .item-card{
+      height: 100%;
+    }
   }
 }

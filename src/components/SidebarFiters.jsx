@@ -2,10 +2,14 @@ import React from 'react'
 import FilteredBy from './FilteredBy';
 import ContentFilter from './ContentFilter';
 
-const SidebarFilter = () => (
-  <div className="siderbar-filter">
+import '../assets/scss/components/SidebarFilter.scss'
+
+const SidebarFilter = ({regions}) => (
+  <div className="sidebar-filter">
     <FilteredBy />
-    <ContentFilter />
+    <ContentFilter type="selectbox" name="Regiones" items={regions} place="Seleccione una region" />
+    <ContentFilter type="selectbox" name="Actividades" place="Seleccione una actividad" />
+    <ContentFilter type="selectbox" name="Días" place="Seleccione un dia" />
   </div>
 )
 
