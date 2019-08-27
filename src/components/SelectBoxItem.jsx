@@ -9,9 +9,9 @@ const SelectBoxItem = (props) => (
     {props.items && props.items.length > 0 && (
       props.items.map( item => {
         if(props.params && props.params.id === item.id){
-          return <option value={item.id} selected>{item.name}</option>
+          return <option value={item.id} selected>{item.name ? item.name : item.id}</option>
         }else{
-          return <option value={item.id}>{item.name}</option>
+          return <option value={item.id}>{item.name ? item.name : item.id}</option>
         }
       })
     )}

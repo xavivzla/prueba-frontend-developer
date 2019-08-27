@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react'
-// import { withRouter } from 'react-router-dom'
 import { AppContext } from '../utils/api.conext';
 
 import '../assets/scss/components/Home.scss'
@@ -51,7 +50,7 @@ class Home extends Component {
               <div className="home__buttons">
                 <button onClick={() => {
                   this.pushNewRoute()
-                }} 
+                }}
                   type="button" className="home__btn">
                   Buscar Region
               </button>

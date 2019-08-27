@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-// import axios from 'axios'
 import LazyLoad from 'react-lazyload'
 import { CSSTransition } from 'react-transition-group'
-import { AppContext } from '../utils/api.conext';
+import { AppContext } from '../utils/api.conext'
 import ApiFetch from '../utils/api.fetch'
 
 import SidebarFilter from '../components/SidebarFiters'
@@ -13,98 +12,90 @@ import Breadcrumb from '../components/Breadcrumb'
 import '../assets/scss/components/Cataloge.scss'
 import '../assets/scss/components/TransitionFade.scss'
 
-async function getTours(params) {
-  return await ApiFetch.listTours({...params})
+const getTours = (params) => ApiFetch.listTours({ ...params })
 
-  // const tours = async () => {
-    //     const params = {
-    //       region_id: 1385,
-    //       activity_id: 2,
-    //       // region_id: this.props.location.params.id
-    //     }
-    //     updateToursList(result)
-}
 class Cataloge extends Component {
   constructor(props) {
     super(props)
     this.state = {
       toursList: [],
+      available_filters: {},
       filters: {
         region_id: null,
         activity_id: null,
         days_id: null,
-      }
+        order_by: null,
+      },
     }
 
-    this._handleChangeRegion = this._handleChangeRegion.bind(this)
+    this.handleChangeRegion = this.handleChangeRegion.bind(this)
+    this.handleChangeSort = this.handleChangeSort.bind(this)
   }
 
   componentDidMount() {
     const params = {
-      region_id: (this.props.location && this.props.location.params && this.props.location.params.id) ? this.props.location.params.id : undefined,
+      region_id: ( this.props.location && this.props.location.params && this.props.location.params.id) ? this.props.location.params.id : undefined,
       activity_id: undefined,
     }
-    getTours(params)
-    .then((data) => {
-      this.setState({toursList: data.packages})
-    })
-  }
-
-
-
-  // pushNewRoute(regionChange) {
-	// 	const region = this.context.regionsList.find(region => region.id === regionChange)
-  //   const slugRegion = region.slug
-  //   const idRegion = region.id
-  //   const nameRegion = region.name
-
-	// 	this.props.history.push({
-  //     pathname: `/cataloge/${slugRegion}`,
-  //     params: {
-  //       id: idRegion,
-  //       name: nameRegion,
-        
-	// 		}
-	// 	})
-  // }
-
-  _handleChangeRegion(e) {
-    this.setState({
-      filters: {
-        region_id: e.target.value
-      }
-    })
-    console.log(this.state)
     
-    setTimeout(() => {
-      getTours(this.state.filters)
+    getTours(params)
       .then((data) => {
-        console.log('change', data)
-        this.setState({toursList: data.packages})
+        this.setState({
+          toursList: data.packages,
+          available_filters: data.available_filters,
+        })
       })
-    }, 50)
   }
 
+  handleChangeSort(e) {
+    getTours(this.state.filters)
+      .then((data) => {
+        this.setState({
+          filters: {
+            ...this.state.filters,
+            order_by: e.target.value,
+          },
+          toursList: data.packages,
+        })
+      })
+  }
 
+  handleChangeRegion(e) {
+    const target = e.target
+    getTours(this.state.filters)
+      .then((data) => {
+        this.setState({
+          filters: {
+            region_id: target.value
+          },
+          toursList: data.packages,
+        })
+      })
+  }
 
   render() {
     const { regionsList } = this.context
 
-    const { toursList } = this.state
-
+    const { toursList, available_filters } = this.state
 
     return (
-      <div className="cataloge">
+      <div className="cataloge container">
         <div className="cataloge__header">
+
           <Breadcrumb />
           <div className="cataloge__name">{(this.props.location.params && this.props.location.params.name) ? this.props.location.params.name : 'Categorias'}</div>
         </div>
         <div className="cataloge__cont">
           <div className="cataloge__left">
-            <SidebarFilter regions={regionsList} params={this.props.location.params } changeRegion={this._handleChangeRegion} />
+            <SidebarFilter
+              regions={regionsList}
+              params={this.props.location.params }
+              changeRegion={this.handleChangeRegion}
+              activities={available_filters.activities}
+              days={available_filters.days} />
           </div>
           <div className="cataloge__right">
-            <BarFilterSort />
+            <BarFilterSort handleChange={this.handleChangeSort} />
             <div className="cataloge__list">
               {toursList && toursList.length > 0 && (
                 toursList.map(item => {

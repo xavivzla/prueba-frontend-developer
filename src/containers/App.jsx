@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-// import { StoreProvider } from '../utils/api.conext'
+import { AppContextProvider } from '../utils/api.conext';
 
 import Home from './Home'
 import Cataloge from './Cataloge'
@@ -9,7 +9,6 @@ import Tour from './Tour'
 import ErrorPage from './ErrorPage'
 
 import '../assets/scss/App.scss'
-import { AppContextProvider } from '../utils/api.conext';
 
 const App = () => (
   <BrowserRouter>

@@ -20,10 +20,12 @@ class Peticiones {
   }
   
   static listTours(params) {
-    console.log(params)
 		return (
 			async () =>{
-				const getData = await fetch(`${Peticiones.URL_TOURS}?region_id=${params.region_id}`, Peticiones.CONFIG)
+        const region = `${params.region_id ? 'region_id=' + params.region_id : ''}`
+        const order = `${params.order_by ? 'order_by=' + params.order_by : ''}`
+        const q = `${region ? region + '&&': ''}${order ? order + '&&' : ''}`
+				const getData = await fetch(`${Peticiones.URL_TOURS}?include_filters=1&&${q}`, Peticiones.CONFIG)
         const data = await getData.json()
 				return data
 			}

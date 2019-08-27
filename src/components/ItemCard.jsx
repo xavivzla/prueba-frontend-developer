@@ -20,13 +20,13 @@ const ItemCard = ({name, principal_photo, price, has_tour, days_and_nights, acti
       {activities && activities.length > 0 && (
         <div className="item-card__activities">
           <span className="item-card__activities-name">Actividades: </span>
-        {
-          activities.map(activity => {
-          return (
-              activity.name
+          {
+            activities.map(activity => {
+              return (
+                activity.name
               )
             })
-        }
+          }
         </div>
       )}
     </div>
