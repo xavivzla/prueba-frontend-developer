@@ -33,6 +33,7 @@ class Cataloge extends Component {
     this.handleChangeRegion = this.handleChangeRegion.bind(this)
     this.handleChangeSort = this.handleChangeSort.bind(this)
     this.handleChangeActivity = this.handleChangeActivity.bind(this)
+    this.formatDays = this.formatDays.bind(this)
   }
 
   componentDidMount() {
@@ -48,6 +49,7 @@ class Cataloge extends Component {
           available_filters: data.available_filters,
           loading: false,
         })
+        this.formatDays(data.available_filters.days)
       })
   }
 
@@ -80,8 +82,10 @@ class Cataloge extends Component {
       .then((data) => {
         this.setState({
           toursList: data.packages,
+          available_filters: data.available_filters,
           loading: false,
         })
+        this.formatDays(data.available_filters.days)
       })
   }
 
@@ -97,9 +101,28 @@ class Cataloge extends Component {
       .then((data) => {
         this.setState({
           toursList: data.packages,
+          available_filters: data.available_filters,
           loading: false,
         })
+        this.formatDays(data.available_filters.days)
       })
+  }
+
+  formatDays(days) {
+    let data = days.map((item) => {
+      return {
+        id: item,
+        name: `${item} dias`,
+      }
+    })
+    this.setState({
+      available_filters: {
+        ...this.state.available_filters,
+        days: data,
+      }
+    })
+
+    console.log(data)
   }
 
   render() {
