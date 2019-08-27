@@ -24,7 +24,8 @@ class Peticiones {
 			async () =>{
         const region = `${params.region_id ? 'region_id=' + params.region_id : ''}`
         const order = `${params.order_by ? 'order_by=' + params.order_by : ''}`
-        const q = `${region ? region + '&&': ''}${order ? order + '&&' : ''}`
+        const activity = `${params.activity_id ? 'activity_id=' + params.activity_id : ''}`
+        const q = `${region ? region + '&&': ''}${order ? order + '&&' : ''}${activity ? activity + '&&' : ''}`
 				const getData = await fetch(`${Peticiones.URL_TOURS}?include_filters=1&&${q}`, Peticiones.CONFIG)
         const data = await getData.json()
 				return data

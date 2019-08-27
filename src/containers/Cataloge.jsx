@@ -8,6 +8,7 @@ import SidebarFilter from '../components/SidebarFiters'
 import ItemCard from '../components/ItemCard'
 import BarFilterSort from '../components/BarFilterSort'
 import Breadcrumb from '../components/Breadcrumb'
+import Loading from '../components/Loading'
 
 import '../assets/scss/components/Cataloge.scss'
 import '../assets/scss/components/TransitionFade.scss'
@@ -26,10 +27,12 @@ class Cataloge extends Component {
         days_id: null,
         order_by: null,
       },
+      loading: true,
     }
 
     this.handleChangeRegion = this.handleChangeRegion.bind(this)
     this.handleChangeSort = this.handleChangeSort.bind(this)
+    this.handleChangeActivity = this.handleChangeActivity.bind(this)
   }
 
   componentDidMount() {
@@ -43,32 +46,58 @@ class Cataloge extends Component {
         this.setState({
           toursList: data.packages,
           available_filters: data.available_filters,
+          loading: false,
         })
       })
   }
 
-  handleChangeSort(e) {
-    getTours(this.state.filters)
+  async handleChangeSort(e) {
+    await this.setState({
+      filters: {
+        ...this.state.filters,
+        order_by: e.target.value,
+      },
+      loading: true,
+    })
+    await getTours(this.state.filters)
       .then((data) => {
         this.setState({
-          filters: {
-            ...this.state.filters,
-            order_by: e.target.value,
-          },
           toursList: data.packages,
+          loading: false,
         })
       })
   }
 
-  handleChangeRegion(e) {
-    const target = e.target
-    getTours(this.state.filters)
+  async handleChangeRegion(e) {
+    await this.setState({
+      filters: {
+        ...this.state.filters,
+        region_id: e.target.value,
+      },
+      loading: true,
+    })
+    await getTours(this.state.filters)
       .then((data) => {
         this.setState({
-          filters: {
-            region_id: target.value
-          },
           toursList: data.packages,
+          loading: false,
+        })
+      })
+  }
+
+  async handleChangeActivity(e) {
+    await this.setState({
+      filters: {
+        ...this.state.filters,
+        activity_id: e.target.value,
+      },
+      loading: true,
+    })
+    await getTours(this.state.filters)
+      .then((data) => {
+        this.setState({
+          toursList: data.packages,
+          loading: false,
         })
       })
   }
@@ -76,12 +105,12 @@ class Cataloge extends Component {
   render() {
     const { regionsList } = this.context
 
-    const { toursList, available_filters } = this.state
+    const { toursList, available_filters, loading } = this.state
 
     return (
       <div className="cataloge container">
+        {loading && <Loading/>}
         <div className="cataloge__header">
-
           <Breadcrumb />
           <div className="cataloge__name">{(this.props.location.params && this.props.location.params.name) ? this.props.location.params.name : 'Categorias'}</div>
         </div>
@@ -92,6 +121,7 @@ class Cataloge extends Component {
               params={this.props.location.params }
               changeRegion={this.handleChangeRegion}
               activities={available_filters.activities}
+              changeActivity={this.handleChangeActivity}
               days={available_filters.days} />
           </div>
           <div className="cataloge__right">
