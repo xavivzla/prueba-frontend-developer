@@ -9,6 +9,7 @@ import ItemCard from '../components/ItemCard'
 import BarFilterSort from '../components/BarFilterSort'
 // import Breadcrumb from '../components/Breadcrumb'
 import Loading from '../components/Loading'
+import Spinner from '../components/Spinner'
 
 import '../assets/scss/components/Cataloge.scss'
 import '../assets/scss/components/TransitionFade.scss'
@@ -248,16 +249,14 @@ class Cataloge extends Component {
               {toursList && toursList.length > 0 && (
                 toursList.map(item => {
                   return (
-                    <LazyLoad offset={100} key={item.id}>
-                      <CSSTransition
-                        timeout={500}
-                        classNames="list-transition"
-                        appear
-                        onEntered={item.principal_photo}>
-                        <div className="cataloge__item">
-                          <ItemCard {...item} />
-                        </div>
-                      </CSSTransition>
+                    <LazyLoad
+                    offset={100}
+                    key={item.id}
+                    height={100}
+                    placeholder={<Spinner />}>
+                      <div className="cataloge__item">
+                        <ItemCard {...item} />
+                      </div>
                     </LazyLoad>
                   )
                 }))
