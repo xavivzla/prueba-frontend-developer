@@ -20,14 +20,11 @@ class Cataloge extends Component {
     super(props)
     this.state = {
       toursList: [],
+      regions: [],
       available_filters: {},
-      filters: {
-        region_id: null,
-        activity_id: null,
-        days_id: null,
-        order_by: null,
-      },
+      filters: {},
       loading: true,
+      filterMobileOpen: false,
     }
 
     this.handleChangeRegion = this.handleChangeRegion.bind(this)
@@ -35,6 +32,9 @@ class Cataloge extends Component {
     this.handleChangeActivity = this.handleChangeActivity.bind(this)
     this.handleChangeDay = this.handleChangeDay.bind(this)
     this.formatDays = this.formatDays.bind(this)
+    this.handleRemoveAllFilters = this.handleRemoveAllFilters.bind(this)
+    this.handleRemoveFilter = this.handleRemoveFilter.bind(this)
+    this.handleClickToggleFilter = this.handleClickToggleFilter.bind(this)
   }
 
   componentDidMount() {
@@ -46,6 +46,7 @@ class Cataloge extends Component {
     getTours(params)
       .then((data) => {
         this.setState({
+          regions: data.available_filters.regions,
           toursList: data.packages,
           available_filters: data.available_filters,
           loading: false,
@@ -72,16 +73,22 @@ class Cataloge extends Component {
   }
 
   async handleChangeRegion(e) {
+    let filterName = e.target[e.target.selectedIndex].text
     await this.setState({
       filters: {
         ...this.state.filters,
-        region_id: e.target.value,
+        region: {
+          ...this.state.filters.region,
+          id: e.target.value,
+          name: filterName,
+        },
       },
       loading: true,
     })
     await getTours(this.state.filters)
       .then((data) => {
         this.setState({
+          regions: data.available_filters.regions,
           toursList: data.packages,
           available_filters: data.available_filters,
           loading: false,
@@ -91,16 +98,22 @@ class Cataloge extends Component {
   }
 
   async handleChangeActivity(e) {
+    let filterName = e.target[e.target.selectedIndex].text
     await this.setState({
       filters: {
         ...this.state.filters,
-        activity_id: e.target.value,
+        activity: {
+          ...this.state.filters.activity,
+          id: e.target.value,
+          name: filterName,
+        },
       },
       loading: true,
     })
     await getTours(this.state.filters)
       .then((data) => {
         this.setState({
+          regions: data.available_filters.regions,
           toursList: data.packages,
           available_filters: data.available_filters,
           loading: false,
@@ -110,22 +123,72 @@ class Cataloge extends Component {
   }
 
   async handleChangeDay(e) {
+    let filterName = e.target[e.target.selectedIndex].text
     await this.setState({
       filters: {
         ...this.state.filters,
-        days_id: e.target.value,
+        days: {
+          ...this.state.filters.days,
+          id: e.target.value,
+          name: filterName,
+        },
       },
       loading: true,
     })
     await getTours(this.state.filters)
       .then((data) => {
         this.setState({
+          regions: data.available_filters.regions,
           toursList: data.packages,
           available_filters: data.available_filters,
           loading: false,
         })
         this.formatDays(data.available_filters.days)
       })
+  }
+
+  async handleRemoveAllFilters() {
+    await this.setState({
+      filters: {},
+      loading: true,
+    })
+    await getTours(this.state.filters)
+      .then((data) => {
+        this.setState({
+          regions: data.available_filters.regions,
+          toursList: data.packages,
+          available_filters: data.available_filters,
+          loading: false,
+        })
+        this.formatDays(data.available_filters.days)
+      })
+  }
+
+  async handleRemoveFilter(e) {
+    let filter = e.target.getAttribute('data-name')
+    let filters = this.state.filters
+    delete filters[filter];
+    await this.setState({
+      filters: filters,
+      loading: true,
+    })
+    await getTours(this.state.filters)
+      .then((data) => {
+        this.setState({
+          regions: data.available_filters.regions,
+          toursList: data.packages,
+          available_filters: data.available_filters,
+          loading: false,
+        })
+        this.formatDays(data.available_filters.days)
+      })
+  }
+
+  handleClickToggleFilter() {
+    console.log(this.state.filterMobileOpen)
+    this.setState({
+      filterMobileOpen: !this.state.filterMobileOpen
+    })
   }
 
   formatDays(days) {
@@ -144,27 +207,32 @@ class Cataloge extends Component {
   }
 
   render() {
-    const { regionsList } = this.context
 
-    const { toursList, available_filters, loading } = this.state
+    const { toursList, available_filters, loading, regions, filters, filterMobileOpen } = this.state
 
     return (
       <div className="cataloge container">
         {loading && <Loading/>}
         <div className="cataloge__header">
-          <Breadcrumb />
+          {/* <Breadcrumb /> */}
           <div className="cataloge__name">{(this.props.location.params && this.props.location.params.name) ? this.props.location.params.name : 'Categorias'}</div>
         </div>
         <div className="cataloge__cont">
-          <div className="cataloge__left">
+          <div id="openFilter" className={filterMobileOpen ? '' : 'active'} onClick={this.handleClickToggleFilter}>Abrir Filtros</div>
+          <div className={filterMobileOpen ? 'cataloge__left active': 'cataloge__left'}>
             <SidebarFilter
-              regions={regionsList}
+              filterOpen={filterMobileOpen}
+              handleClick={this.handleClickToggleFilter}
+              regions={regions}
               params={this.props.location.params }
               changeRegion={this.handleChangeRegion}
               activities={available_filters.activities}
               changeActivity={this.handleChangeActivity}
               changeDay={this.handleChangeDay}
-              days={available_filters.days} />
+              days={available_filters.days}
+              removeFilters={this.handleRemoveAllFilters}
+              filters={filters}
+              removeFilter={this.handleRemoveFilter}/>
           </div>
           <div className="cataloge__right">
             <BarFilterSort handleChange={this.handleChangeSort} />
