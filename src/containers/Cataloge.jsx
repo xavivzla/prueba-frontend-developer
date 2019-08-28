@@ -254,7 +254,7 @@ class Cataloge extends Component {
                     key={item.id}
                     height={100}
                     placeholder={<Spinner />}>
-                      <div className="cataloge__item">
+                      <div className="cataloge__item" key={item.id}>
                         <ItemCard {...item} />
                       </div>
                     </LazyLoad>
