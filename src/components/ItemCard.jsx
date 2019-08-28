@@ -1,12 +1,19 @@
 import React from 'react'
+import LazyLoad from 'react-lazyload'
 
 import '../assets/scss/components/ItemCard.scss'
+
+import Spinner from '../components/Spinner'
 
 const ItemCard = ({name, principal_photo, price, has_tour, days_and_nights, activities }) => (
   <div className="item-card">
     <div className="item-card__top">
-      <img className="item-card__image" src={principal_photo} alt="" />
-
+      <LazyLoad
+        once
+        debounce = {300}
+        placeholder={<Spinner />} >
+        <img className="item-card__image" src={principal_photo} alt="" />
+      </LazyLoad>
       <div className="item-card__cont">
         {has_tour && <div className="item-card__flag">TOUR</div>}
         <div className="item-card__time">{days_and_nights}</div>

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import LazyLoad from 'react-lazyload'
-import { CSSTransition } from 'react-transition-group'
 import { AppContext } from '../utils/api.conext'
 import ApiFetch from '../utils/api.fetch'
 
@@ -9,7 +7,6 @@ import ItemCard from '../components/ItemCard'
 import BarFilterSort from '../components/BarFilterSort'
 // import Breadcrumb from '../components/Breadcrumb'
 import Loading from '../components/Loading'
-import Spinner from '../components/Spinner'
 
 import '../assets/scss/components/Cataloge.scss'
 import '../assets/scss/components/TransitionFade.scss'
@@ -249,15 +246,9 @@ class Cataloge extends Component {
               {toursList && toursList.length > 0 && (
                 toursList.map(item => {
                   return (
-                    <LazyLoad
-                    offset={100}
-                    key={item.id}
-                    height={100}
-                    placeholder={<Spinner />}>
-                      <div className="cataloge__item" key={item.id}>
-                        <ItemCard {...item} />
-                      </div>
-                    </LazyLoad>
+                    <div className="cataloge__item" key={item.id}>
+                      <ItemCard {...item} />
+                    </div>
                   )
                 }))
               }
