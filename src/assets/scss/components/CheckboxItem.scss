@@ -1,3 +1,5 @@
+@import '../core/declare-fonts';
+
 .checkbox{
   display: flex;
   flex-direction: row;
@@ -22,7 +24,7 @@
   &__name{
     color: #305357;
     font-size: 15px;
-    font-family: "ProximaNova-Regular", sans-serif;
+    font-family: $PrimaryRegular;
     padding-left: 20px;
     position: relative;
     line-height: .8;

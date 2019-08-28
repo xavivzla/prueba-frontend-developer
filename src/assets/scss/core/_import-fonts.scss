@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+//Proxima Nova
+@font-face {
+  font-family: "ProximaNova-Light";
+  src: url("../../static/fonts/proximaNova/NovaLight/ProximaNova-Light.eot");
+  src: url("../../static/fonts/proximaNova/NovaLight/ProximaNova-Light.woff2") format("woff2"),
+    url("../../static/fonts/proximaNova/NovaLight/ProximaNova-Light.woff") format("woff"),
+    url("../../static/fonts/proximaNova/NovaLight/ProximaNova-Light.ttf") format("truetype"),
+    url("../../static/fonts/proximaNova/NovaLight/ProximaNova-Light.svg#ProximaNova-Light")
+      format("svg"),
+    url("../../static/fonts/proximaNova/NovaLight/ProximaNova-Light.eot?#iefix")
+      format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "ProximaNova-Regular";
+  src: url("../../static/fonts/proximaNova/NovaRegular/ProximaNova-Regular.eot");
+  src: url("../../static/fonts/proximaNova/NovaRegular/ProximaNova-Regular.woff2") format("woff2"),
+    url("../../static/fonts/proximaNova/NovaRegular/ProximaNova-Regular.woff") format("woff"),
+    url("../../static/fonts/proximaNova/NovaRegular/ProximaNova-Regular.ttf") format("truetype"),
+    url("../../static/fonts/proximaNova/NovaRegular/ProximaNova-Regular.svg#ProximaNova-Regular")
+      format("svg"),
+    url("../../static/fonts/proximaNova/NovaRegular/ProximaNova-Regular.eot?#iefix")
+      format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ProximaNova-Bold";
+  src: url("../../static/fonts/proximaNova/NovaBold/ProximaNova-Bold.eot");
+  src: url("../../static/fonts/proximaNova/NovaBold/ProximaNova-Bold.woff2") format("woff2"),
+    url("../../static/fonts/proximaNova/NovaBold/ProximaNova-Bold.woff") format("woff"),
+    url("../../static/fonts/proximaNova/NovaBold/ProximaNova-Bold.ttf") format("truetype"),
+    url("../../static/fonts/proximaNova/NovaBold/ProximaNova-Bold.svg#ProximaNova-Bold")
+      format("svg"),
+    url("../../static/fonts/proximaNova/NovaBold/ProximaNova-Bold.eot?#iefix")
+      format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}

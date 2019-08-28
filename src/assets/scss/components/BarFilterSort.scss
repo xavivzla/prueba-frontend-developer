@@ -1,3 +1,6 @@
+@import '../core/declare-fonts';
+
+
 .bar-filter{
   margin-bottom: 50px;
   &__order{
@@ -8,7 +11,7 @@
   &__name{
     font-weight: normal;
     font-size: 14px;
-    font-family: "ProximaNova-Semibold", sans-serif;
+    font-family: $PrimaryBold;
     color: #305357;
     margin: 0;
   }
@@ -25,6 +28,6 @@
     z-index: 2;
     border: 1px solid #E3E3E3;
     border-radius: 3px;
-    font-family: "ProximaNova-Regular", sans-serif;
+    font-family: $PrimaryRegular;
   }
 }

@@ -1,3 +1,5 @@
+@import '../core/declare-fonts';
+
 .item-card{
   position: relative;
   display: inline-block;
@@ -30,13 +32,13 @@
     position: relative;
   }
   &__bottom{
-    padding: 30px;
+    padding: 30px 10px;
     box-sizing: border-box;
   }
   &__price{
     font-size: 18px;
     color: #fff;
-    font-weight: bold;
+    font-family: $PrimaryRegular;
     position: absolute;
     bottom: -18px;
     background: rgb(255, 124, 18);
@@ -55,7 +57,8 @@
     right: 0;
     font-size: 16px;
     color: #fff;
-    top: 30px;
+    top: 10px;
+    font-family: $PrimaryBold;
     background: rgb(255, 124, 18);
     padding: 5px;
     padding-left: 10px;
@@ -63,13 +66,14 @@
   }
   &__name{
     font-size: 16px;
-    font-weight: bold;
     color: #545454;
     align-self: flex-start;
+    font-family: $PrimaryRegular;
+
   }
   &__time{
     font-size: 24px;
-    font-weight: bold;
+    font-family: $PrimaryBold;
     display: inline-block;
     color: #fff;
     align-self: center;
@@ -78,7 +82,7 @@
   &__activities{
     margin-top: 20px;
     font-size: 13px;
-    font-weight: bold;
+    font-family: $PrimaryLight;
     color: rgb(95, 95, 95);
     &-name{
       font-size: 14px;

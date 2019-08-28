@@ -1,3 +1,5 @@
+@import '../core/declare-fonts';
+
 .filter-by{
   &__cont{
     background: #ff8672;
@@ -11,7 +13,7 @@
     font-size: 14px;
     margin: 0;
     letter-spacing: 1px;
-    font-family: "ProximaNova-Semibold", sans-serif;
+    font-family: $PrimaryBold;
     text-transform: uppercase;
   }
   &__list{
@@ -27,7 +29,7 @@
     color: white;
     font-size: 12px;
     box-sizing: border-box;
-    font-family: "ProximaNova-Regular", sans-serif;
+    font-family: $PrimaryRegular;
     display: flex;
     border-radius: 3px;
     align-items: center;
@@ -42,7 +44,7 @@
   &__action{
     color: #FF8672;
     font-size: 12px;
-    font-family: "ProximaNova-Semibold", sans-serif;
+    font-family: $PrimaryBold;
     cursor: pointer;
     margin: 10px 0 20px 0;
     text-align: right;

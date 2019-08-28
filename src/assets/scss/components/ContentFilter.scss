@@ -1,3 +1,5 @@
+@import '../core/declare-fonts';
+
 .filter-content{
   padding: 24px 20px 0px 20px;
   box-sizing: border-box;
@@ -7,7 +9,7 @@
   &__title{
     font-weight: normal;
     margin: 0;
-    font-family: "ProximaNova-Semibold", sans-serif;
+    font-family: $PrimaryBold;
     text-transform: uppercase;
     padding: 0;
     font-size: 14px;

@@ -1,4 +1,7 @@
 @import '../core/_breakpoints';
+@import '../core/declare-fonts';
+
+
 .cataloge{
   &__cont{
     display: grid;
@@ -52,7 +55,7 @@
   }
   &__name{
     font-size: 42px;
-    font-family: "ProximaNova-Bold", sans-serif;
+    font-family: $PrimaryBold;
     color: #305357;
   }
   &__right{

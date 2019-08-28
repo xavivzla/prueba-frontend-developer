@@ -1,3 +1,9 @@
+@import './declare-fonts';
+
+body{
+  font-family: $font-family;
+}
+
 .container{
   max-width: 1400px;
   margin: 0 auto;
