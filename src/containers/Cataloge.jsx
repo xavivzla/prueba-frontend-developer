@@ -7,7 +7,7 @@ import ApiFetch from '../utils/api.fetch'
 import SidebarFilter from '../components/SidebarFiters'
 import ItemCard from '../components/ItemCard'
 import BarFilterSort from '../components/BarFilterSort'
-import Breadcrumb from '../components/Breadcrumb'
+// import Breadcrumb from '../components/Breadcrumb'
 import Loading from '../components/Loading'
 
 import '../assets/scss/components/Cataloge.scss'
@@ -37,13 +37,22 @@ class Cataloge extends Component {
     this.handleClickToggleFilter = this.handleClickToggleFilter.bind(this)
   }
 
-  componentDidMount() {
-    const params = {
-      region_id: ( this.props.location && this.props.location.params && this.props.location.params.id) ? this.props.location.params.id : undefined,
-      activity_id: undefined,
-    }
-    
-    getTours(params)
+  async componentDidMount() {
+    const region_id = ( this.props.location && this.props.location.params && this.props.location.params.id) ? this.props.location.params.id : undefined;
+    const region_name = ( this.props.location && this.props.location.params && this.props.location.params.name) ? this.props.location.params.name : undefined;
+    await this.setState({
+      filters: {
+        ...this.state.filters,
+        region: {
+          ...this.state.filters.region,
+          id: region_id,
+          name: region_name,
+        },
+      },
+      loading: true,
+    })
+
+    await getTours(this.state.filters)
       .then((data) => {
         this.setState({
           regions: data.available_filters.regions,
@@ -185,7 +194,6 @@ class Cataloge extends Component {
   }
 
   handleClickToggleFilter() {
-    console.log(this.state.filterMobileOpen)
     this.setState({
       filterMobileOpen: !this.state.filterMobileOpen
     })

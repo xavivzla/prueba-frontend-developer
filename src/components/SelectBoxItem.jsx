@@ -4,7 +4,7 @@ import '../assets/scss/components/Selectbox.scss'
 
 const SelectBoxItem = (props) => (
 
-  <select name="" id="" className="selectbox" onChange={props.change} >
+  <select name="" id="" className="selectbox" onChange={props.change}>
     <option>{props.place}</option>
     {props.items && props.items.length > 0 && (
       props.items.map( item => {
